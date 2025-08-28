@@ -1,0 +1,543 @@
+/* Importar fuente de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Estilos Generales */
+:root {
+    --color-primary: #5A67D8; /* Azul */
+    --color-secondary: #271d46; /* Verde */
+    --color-dark: #2D3748; /* Gris oscuro */
+    --color-light: #E2E8F0; /* Gris claro */
+    --font-family: 'Poppins', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    background-color: #f7fafc;
+    color: var(--color-dark);
+    scroll-behavior: smooth;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navegación */
+header {
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    transition: background-color 0.5s;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.5s;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin-left: 2rem;
+}
+
+nav ul li a {
+    color: var(--color-dark);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.5s ease;
+}
+
+nav ul li a:hover {
+    color: var(--color-primary);
+}
+
+/* --- Estilos del botón de modo oscuro --- */
+.dark-mode-toggle {
+    display: none; /* Oculta el checkbox */
+}
+
+.toggle-label {
+    display: block;
+    width: 50px;
+    height: 25px;
+    border-radius: 25px;
+    background-color: var(--color-dark);
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s;
+    margin-right: 2rem;
+}
+
+.toggle-label::after {
+    content: "";
+    display: block;
+    width: 21px;
+    height: 21px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+}
+
+/* Mueve el círculo y cambia el color cuando está activado */
+.dark-mode-toggle:checked + .toggle-label {
+    background-color: var(--color-primary);
+}
+
+.dark-mode-toggle:checked + .toggle-label::after {
+    transform: translateX(25px);
+}
+
+/* --- Reglas para el Modo Oscuro cuando está activado --- */
+.dark-mode-toggle:checked ~ body {
+    background-color: #121212;
+    color: #f7fafc;
+}
+
+.dark-mode-toggle:checked ~ body header {
+    background-color: #1a1a1a;
+}
+
+.dark-mode-toggle:checked ~ body nav ul li a,
+.dark-mode-toggle:checked ~ body .logo {
+    color: #f7fafc;
+}
+
+.dark-mode-toggle:checked ~ body .about,
+.dark-mode-toggle:checked ~ body .services,
+.dark-mode-toggle:checked ~ body .gallery,
+.dark-mode-toggle:checked ~ body .contact {
+    background-color: #1e1e1e;
+    color: #f7fafc;
+}
+
+.dark-mode-toggle:checked ~ body h2 {
+    color: #f7fafc;
+}
+
+.dark-mode-toggle:checked ~ body .service-item,
+.dark-mode-toggle:checked ~ body .contact-form {
+    background-color: #1a1a1a;
+    color: #f7fafc;
+}
+
+.dark-mode-toggle:checked ~ body .service-item h3 {
+    color: var(--color-primary);
+}
+
+.dark-mode-toggle:checked ~ body .contact-form label {
+    color: #f7fafc;
+}
+
+.dark-mode-toggle:checked ~ body footer {
+    background-color: #1a1a1a;
+    color: #f7fafc;
+}
+
+
+/* Secciones */
+section {
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.hero {
+    position: relative;
+    color: #fff;
+    min-height: 80vh;
+    display: flex;
+    justify-content: flex-end; /* Alinea el contenido a la derecha del contenedor */
+    align-items: center;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    overflow: hidden;
+    padding: 0 5%; /* Añade padding para que el contenido no toque el borde de la pantalla */
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: right; /* Alinea el texto a la derecha */
+    max-width: 600px; /* Limita el ancho del texto para una mejor lectura */
+}
+
+.hero h1 {
+    font-size: 4.5rem; /* Ajusta este valor para hacer el título más grande */
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+.about {
+    background-color: #fff;
+    padding: 6rem 2rem;
+}
+
+.about h2 {
+    text-align: right; 
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    max-width: 1100px;
+    color: var(--color-dark);
+    margin: 0 auto;
+    text-align: right;
+    
+}
+
+.about-container {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: right; /* Alinea el texto a la derecha dentro del contenedor */
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-image {
+    flex: 1;
+    text-align: left; /* Alinea la imagen a la izquierda */
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Media Query para responsividad en móviles */
+@media (max-width: 768px) {
+    .about h2 {
+        text-align: center; /* Centra el título en móviles para mejor lectura */
+    }
+    .about-container {
+        flex-direction: column; /* Apila los elementos en columnas en pantallas pequeñas */
+        text-align: center; /* Centra el texto en móviles */
+    }
+    .about-image {
+        text-align: center;
+        margin-top: 1.5rem;
+    }
+}
+
+
+.services {
+    background: url('imagenes/banner7.jpg');
+    color: var(--color-dark); /* Cambiamos el color del texto a oscuro */
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.services h2 {
+    color: #fff; /* Ahora el título será blanco */
+}
+
+.service-item {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.service-item h3 {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.service-item {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.service-item:hover {
+    transform: translateY(-10px);
+}
+
+.service-item h3 {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+.gallery {
+    padding: 6rem 2rem;
+    background-color: #f7fafc;
+    text-align: center;
+}
+
+.gallery h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--color-dark);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- Media Queries para responsividad (si las tienes) --- */
+@media (max-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Formulario de Contacto */
+.contact {
+    background: url('imagenes/banner5.jpg');
+    /* Aquí solo la imagen, sin gradiente. */
+    color: var(--color-dark); /* Color de texto general oscuro para la sección. */
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.contact h2 {
+    color: #fff; /* ¡Aquí el cambio! El título ahora es blanco. */
+}
+
+.contact-form {
+    background: #fff; /* Fondo blanco sólido para el formulario. */
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.form-group label {
+    color: var(--color-dark); /* Las etiquetas del formulario también serán oscuras. */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(90, 103, 216, 0.2);
+}
+
+/* Botones */
+.btn {
+    display: inline-block;
+    background-color: #fff; /* Color de fondo blanco */
+    color: #000; /* Color de texto negro */
+    padding: 1.2rem 3rem; 
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700; 
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--color-secondary);
+    color: #fff; /* Las letras se vuelven blancas al pasar el ratón */
+}
+
+/* Pie de página */
+footer {
+    background-color: #fff; /* Fondo blanco */
+    color: #000; /* Letras negras */
+    text-align: center;
+    padding: 1.5rem;
+}
+
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo {
+    max-width: 100px; /* Ajusta este valor al tamaño que desees */
+    height: auto;
+    margin-bottom: 1rem; /* Añade espacio entre el logo y el texto */
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        text-align: center;
+    }
+    nav ul {
+        margin-top: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    nav ul li {
+        margin: 0.5rem 1rem;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    section {
+        padding: 4rem 1rem;
+    }
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aplicación de la animación a las secciones */
+.fade-in-section {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Opcional: añade un retraso a las secciones para que no aparezcan todas a la vez */
+.services, .gallery, .contact {
+    animation-delay: 0.5s;
+}
+
+.dark-mode-toggle {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+/* Estilos para el interruptor visual */
+.toggle-label {
+    display: block;
+    width: 50px;
+    height: 25px;
+    border-radius: 25px;
+    background-color: var(--color-dark);
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.3s;
+    margin-right: 2rem;
+}
+
+/* El círculo del interruptor */
+.toggle-label::after {
+    content: "";
+    display: block;
+    width: 21px;
+    height: 21px;
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+}
+
+/* Mueve el círculo y cambia el color del fondo cuando está activado */
+.dark-mode-toggle:checked + .toggle-label {
+    background-color: var(--color-primary);
+}
+
+.dark-mode-toggle:checked + .toggle-label::after {
+    transform: translateX(25px);
+}
+
